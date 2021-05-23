@@ -31,7 +31,6 @@ public class YamlWriterTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_JSON);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml\n" +
                 "input payload application/json\n" +
                 "*/\n" +
@@ -58,7 +57,6 @@ public class YamlWriterTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_JSON);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml; RemoveHead=true\n" +
                 "input payload application/json\n" +
                 "*/\n" +
@@ -77,7 +75,6 @@ public class YamlWriterTest {
         assertEquals(expectedYaml,mapped);
 
         mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml; RemoveHead=true\n" +
                 "input payload application/json\n" +
                 "*/\n" +
@@ -96,7 +93,6 @@ public class YamlWriterTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_JSON);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml; DisableQuotes=true\n" +
                 "input payload application/json\n" +
                 "*/\n" +
@@ -127,7 +123,6 @@ public class YamlWriterTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_YAML);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml; RemoveHead=true\n" +
                 "input payload application/yaml\n" +
                 "*/\n" +
@@ -155,7 +150,6 @@ public class YamlWriterTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_YAML);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-yaml\n" +
                 "input payload application/x-yaml\n" +
                 "*/\n" +

@@ -111,7 +111,6 @@ public class JavaWriterTest {
     void testIncompatibleRequestedType() throws Exception {
         Document<String> data = new DefaultDocument<>("{}", MediaTypes.APPLICATION_JSON);
         Mapper mapper = new Mapper("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/java; OutputClass=java.lang.Object\n" +
                 "*/\n" +
                 "{ a: 5 }");
