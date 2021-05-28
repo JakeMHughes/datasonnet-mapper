@@ -37,7 +37,6 @@ public class YamlReaderTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_YAML);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/json\n" +
                 "input payload application/x-yaml\n" +
                 "*/\n" +
@@ -62,7 +61,6 @@ public class YamlReaderTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_YAML);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/json\n" +
                 "input payload application/x-yaml\n" +
                 "*/\n" +
@@ -84,7 +82,6 @@ public class YamlReaderTest {
         DefaultDocument<?> doc = new DefaultDocument<>(data, MediaTypes.APPLICATION_YAML);
 
         String mapping = "/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/json\n" +
                 "input payload application/x-yaml\n" +
                 "*/\n" +

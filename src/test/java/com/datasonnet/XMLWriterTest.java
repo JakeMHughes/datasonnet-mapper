@@ -193,7 +193,6 @@ public class XMLWriterTest {
         String jsonData = TestResourceReader.readFileAsString("xmlEmptyElements.json");
 
         Mapper mapper = new Mapper("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/xml;OmitXmlDeclaration=true\n" +
                 "*/\n" +
                 "payload");
@@ -203,7 +202,6 @@ public class XMLWriterTest {
         assertFalse(mappedXml.contains("<?xml"));
 
         mapper = new Mapper("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/xml;OmitXmlDeclaration=false\n" +
                 "*/\n" +
                 "payload");
@@ -253,7 +251,6 @@ public class XMLWriterTest {
         }
 
         mapper = new Mapper("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/xml; RootElement=TestRoot\n" +
                 "*/\n" +
                 "payload");

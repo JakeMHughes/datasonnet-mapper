@@ -559,9 +559,14 @@ public class CoreTest {
 
     @Test
     void test_readUrl() {
-        Mapper mapper = new Mapper(lib + ".readUrl(\"https://jsonplaceholder.typicode.com/posts/1\").id\n", new ArrayList<>(), new HashMap<>(), true);
-        String value = mapper.transform("{}").replaceAll("\"", "");
+        Mapper mapper;
+        String value;
+
+        /* Commented out since the url can potentially fail
+        mapper = new Mapper(lib + ".readUrl(\"https://jsonplaceholder.typicode.com/posts/1\").id\n", new ArrayList<>(), new HashMap<>(), true);
+        value = mapper.transform("{}").replaceAll("\"", "");
         assertEquals("1", value);
+         */
 
         mapper = new Mapper("ds.readUrl(\"classpath://readUrlTest.json\").message\n", new ArrayList<>(), new HashMap<>(), true);
         value = mapper.transform("{}").replaceAll("\"", "");

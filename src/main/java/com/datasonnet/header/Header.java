@@ -42,7 +42,6 @@ import java.util.regex.Pattern;
 public class Header {
     public static final String DATASONNET_HEADER = "/** DataSonnet";
     public static final String COMMENT_PREFIX = "//";
-    public static final Pattern VERSION_LINE = Pattern.compile("^version *= *(?<version>[a-zA-Z0-9.+-]+) *(\\r?\\n|$)");
     public static final String DATASONNET_DEFAULT_PREFIX = "default ";
     public static final String DATASONNET_INPUT = "input";
     public static final Pattern INPUT_LINE = Pattern.compile("^(?:input (?<name>\\w+)|input (?<all>\\*)) (?<mediatype>\\S.*)$");
@@ -51,9 +50,6 @@ public class Header {
     public static final String DATASONNET_PRESERVE_ORDER = "preserveOrder";
     public static final String DATAFORMAT_PREFIX = "dataformat";
     public static final String DATAFORMAT_ALL = "*";
-    public static final String LATEST_RELEASE_VERSION = "2.0"; //update this as required
-    private final String versionMajor;
-    private final String versionMinor;
     private final boolean preserveOrder;
     private final Map<String, Map<Integer, MediaType>> namedInputs;
     private final Map<Integer, MediaType> outputs;
@@ -63,15 +59,11 @@ public class Header {
     private final HashMap<String, MediaType> defaultInputs;
     private final MediaType defaultOutput;
 
-    public Header(String version,
-                  boolean preserveOrder,
+    public Header(boolean preserveOrder,
                   Map<String, Collection<MediaType>> namedInputs,
                   List<MediaType> outputs,
                   Iterable<MediaType> allInputs,
                   Iterable<MediaType> dataFormats) {
-        String[] versions = version.split("\\.",2); //[0] = major [1] = minor + remainder if exists
-        this.versionMajor = versions[0];
-        this.versionMinor = versions[1];
         this.preserveOrder = preserveOrder;
         this.defaultInputs = new HashMap<>();
         this.namedInputs = new HashMap<>();
@@ -114,43 +106,8 @@ public class Header {
     }
 
     private static final Header EMPTY =
-            new Header(LATEST_RELEASE_VERSION, true, Collections.emptyMap(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+            new Header(true, Collections.emptyMap(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
 
-    public static Header parseHeader(String script) throws HeaderParseException {
-        if (!script.trim().startsWith(DATASONNET_HEADER)) {
-            return EMPTY;
-        }
-
-        String headerSection = extractHeader(script);
-
-        Matcher versionMatcher = VERSION_LINE.matcher(headerSection);
-        if(!versionMatcher.find()) {
-            throw new HeaderParseException("The first line of the header must be a version line, but is not");
-        }
-
-        String version = versionMatcher.group("version");
-        String headerWithoutVersion = headerSection.substring(versionMatcher.end());
-        String[] splitVersion = version.split("\\.",2); //[0] = major [1] = minor + remainder if exists
-
-        switch (splitVersion[0]) {
-            case "1":
-                if ("0".equals(splitVersion[1])) {
-                    return parseHeader10(headerWithoutVersion);
-                }
-                throw new HeaderParseException("Version must be 1.0 but is " + version);
-            case "2":
-                if ("0".equals(splitVersion[1])) {
-                    return parseHeader20(headerWithoutVersion);
-                } else {
-                    //not sure if a print out is a good enough warning or if we want to add loggers
-                    System.err.println("WARNING: You are using a version that is still in development. " +
-                                       "The latest release version is: " + LATEST_RELEASE_VERSION);
-                    return parseHeader20(headerWithoutVersion, version);
-                }
-            default:
-                throw new HeaderParseException("Major version must be one of [1,2] but is " + splitVersion[0]);
-        }
-    }
 
     @NotNull
     private static String extractHeader(String script) throws HeaderParseException {
@@ -166,94 +123,13 @@ public class Header {
         return headerSection;
     }
 
-    @NotNull
-    private static Header parseHeader10(String headerSection) throws HeaderParseException {
-        JavaPropsMapper mapper = new JavaPropsMapper();
-        JavaPropsSchema schema = new JavaPropsSchema() {
-            class HeaderSplitter extends JPropPathSplitter
-            {
-                protected final char _pathSeparatorChar = '.';
-
-                public HeaderSplitter()
-                {
-                    super(true);
-                }
-
-                @Override
-                public JPropNode splitAndAdd(JPropNode parent,
-                                             String key, String value)
-                {
-                    JPropNode curr = parent;
-                    // split on the path separator character not preceded by a backslash
-                    String[] segments = key.split("(?<!\\\\)" + Pattern.quote("" + _pathSeparatorChar));
-                    for (String segment : segments) {
-                        curr = _addSegment(curr, segment.replaceAll("\\\\", ""));
-                    }
-                    return curr.setValue(value);
-                }
-            }
-            @Override
-            public JPropPathSplitter pathSplitter() {
-                return new HeaderSplitter();
-            };
-        };
-        try {
-            Properties props = new Properties();
-            props.load(new StringReader(headerSection));
-            Map propsMap = mapper.readPropertiesAs(props, schema, Map.class);
-
-            Map<String, Map<String, Map<String, String>>> originalInputs = getOrEmpty(propsMap, "input");
-            Map<String, Collection<MediaType>> inputs = new HashMap<>();
-            for(Map.Entry<String, Map<String, Map<String, String>>> entry : originalInputs.entrySet()) {
-                if(!entry.getKey().equals("*")) {
-                    List<MediaType> mediaTypes = extractMediaTypes(entry.getValue());
-                    inputs.put(entry.getKey(), mediaTypes);
-                }
-            }
-            List<MediaType> allInputs = extractMediaTypes(getOrEmpty(originalInputs, "*"));
-            List<MediaType> output = extractMediaTypes(getOrEmpty(propsMap, "output"));
-            List<MediaType> dataFormat = extractMediaTypes(getOrEmpty(propsMap, "dataformat"));
-
-
-            return new Header("1.0",
-                    getBoolean(propsMap,DATASONNET_PRESERVE_ORDER, true),
-                    inputs,
-                    output,
-                    allInputs,
-                    dataFormat);
-        } catch (IOException|IllegalArgumentException exc) {
-            throw new HeaderParseException("Error parsing DataSonnet Header: " + exc.getMessage(), exc);
-        } catch (ClassCastException exc) {
-            throw new HeaderParseException("Error parsing DataSonnet Header, make sure type parameters are nested properly");
+    public static Header parseHeader(String script) throws HeaderParseException {
+        if (!script.trim().startsWith(DATASONNET_HEADER)) {
+            return EMPTY;
         }
-    }
 
-    private static MediaType extractMediaType(String type, Map<String, String> params) {
-        return new MediaType(MediaType.valueOf(type), params);
-    }
+        String headerSection = extractHeader(script);
 
-    private static List<MediaType> extractMediaTypes(Map<String, Map<String, String>> originals) {
-        List<MediaType> types = new ArrayList<>();
-        for(Map.Entry<String, Map<String, String>> entry : originals.entrySet()) {
-            types.add(extractMediaType(entry.getKey(), entry.getValue()));
-        }
-        return types;
-    }
-
-    private static <T> Map<String, T> getOrEmpty(Map<String, Map<String, T>> map, String key) {
-        return map.getOrDefault(key, Collections.emptyMap());
-    }
-
-    private static boolean getBoolean(Map<String, ?> propsMap, String key, boolean defaultTo) {
-        if (propsMap.containsKey(key)) {
-            return Boolean.parseBoolean(propsMap.get(key).toString());
-        } else {
-            return defaultTo;
-        }
-    }
-
-    @NotNull
-    private static Header parseHeader20(String headerSection, String version) throws HeaderParseException {
         boolean preserve = true;
         List<MediaType> outputs = new ArrayList<>(4);
         Map<String, List<MediaType>> inputs = new HashMap<>(4);
@@ -308,24 +184,7 @@ public class Header {
             }
         }
 
-        return new Header(version, preserve, Collections.unmodifiableMap(inputs), outputs, allInputs, dataformat);
-    }
-
-    @NotNull
-    private static Header parseHeader20(String headerSection) throws HeaderParseException{
-        return parseHeader20(headerSection, "2.0");
-    }
-
-    public String getVersion() {
-        return versionMajor + "." + versionMinor;
-    }
-
-    public String getVersionMajor(){
-        return versionMajor;
-    }
-
-    public String getVersionMinor(){
-        return versionMinor;
+        return new Header(preserve, Collections.unmodifiableMap(inputs), outputs, allInputs, dataformat);
     }
 
     public Map<String, Iterable<MediaType>> getNamedInputs() {
@@ -338,10 +197,6 @@ public class Header {
 
     public Optional<MediaType> getDefaultNamedInput(String name) {
         return Optional.ofNullable(defaultInputs.get(name));
-    }
-
-    public Collection<MediaType> getOutputs() {
-        return Collections.unmodifiableCollection(outputs.values());
     }
 
     public Optional<MediaType> getDefaultOutput() {

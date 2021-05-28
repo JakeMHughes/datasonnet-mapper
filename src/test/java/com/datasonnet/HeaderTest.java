@@ -37,7 +37,6 @@ public class HeaderTest {
     Header header;
 
     String headerStr = "/** DataSonnet\n" +
-            "version=2.0\n" +
             "preserveOrder=false\n" +
             "  \n" +
             "// comment\n" +
@@ -59,33 +58,6 @@ public class HeaderTest {
     @BeforeAll
     void setUp() throws Exception{
         header = Header.parseHeader(headerStr);
-    }
-
-    @Test
-    void testHeaderVersion() throws HeaderParseException {
-        assertEquals(header.getVersion(), "2.0");
-        assertEquals(Header.parseHeader(
-                "/** DataSonnet\n" +
-                "version=2.1\n" +
-                "*/\n"
-        ).getVersion(), "2.1");
-        assertEquals(Header.parseHeader(
-                "/** DataSonnet\n" +
-                        "version=2.15678.45678\n" +
-                        "*/\n"
-        ).getVersion(), "2.15678.45678");
-        assertThrows(HeaderParseException.class,  ()  -> {
-            Header.parseHeader(
-                    "/** DataSonnet\n" +
-                            "version=1.1\n" +
-                            "*/\n"
-            );});
-        assertThrows(HeaderParseException.class,  ()  -> {
-            Header.parseHeader(
-                    "/** DataSonnet\n" +
-                    "version=3.2\n" +
-                    "*/\n"
-            );});
     }
 
     @Test
@@ -146,7 +118,6 @@ public class HeaderTest {
     @Test
     public void testDefaultOutput() throws HeaderParseException {
         Header header1 = Header.parseHeader("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "output application/x-java-object;q=0.9\n" +
                 "output application/json;q=1.0\n" +
                 "*/");
@@ -158,7 +129,6 @@ public class HeaderTest {
     @Test
     public void testDefaultInput() throws HeaderParseException {
         Header header1 = Header.parseHeader("/** DataSonnet\n" +
-                "version=2.0\n" +
                 "input payload application/x-java-object;q=1.0\n" +
                 "input payload application/json;q=0.9\n" +
                 "*/");
