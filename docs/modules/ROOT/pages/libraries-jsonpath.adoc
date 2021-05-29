@@ -1,7 +1,6 @@
 ## jsonpath
 
 ### `select(object json, string path)`
-
 Evaluates JsonPath expression and returns the resulting JSON object.
 It uses the https://github.com/json-path/JsonPath[Jayway JsonPath implementation] and fully supports https://goessner.net/articles/JsonPath/[JsonPath specification].
 
@@ -54,3 +53,8 @@ It uses the https://github.com/json-path/JsonPath[Jayway JsonPath implementation
     "author": "Herman Melville"
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+

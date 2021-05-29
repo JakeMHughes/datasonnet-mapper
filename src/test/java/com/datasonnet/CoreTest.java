@@ -872,11 +872,4 @@ public class CoreTest {
         value = mapper.transform("{}").replaceAll("\"", "");
         assertEquals("olleH", value);
     }
-
-    @Test
-    void test_or() {
-        Mapper mapper = new Mapper(lib + ".or(null, 'abc')\n", new ArrayList<>(), new HashMap<>(), true);
-        String value = mapper.transform("{}").replaceAll("\"", "");
-        assertEquals("abc", value);
-    }
 }

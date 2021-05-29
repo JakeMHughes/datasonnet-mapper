@@ -30,6 +30,10 @@ ds.objects.divideBy(payload, 2)
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `everyEntry(object obj, function func)`
 Returns a boolean depending on if all key-value pairs of `obj` pass the `func`.
 
@@ -53,6 +57,10 @@ ds.objects.everyEntry(payload,function(value,key) value < 2)
 ------------------------
 false
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `mergeWith(object obj1, object obj2)`
 Combines `obj1` and `obj2`.
@@ -82,6 +90,10 @@ ds.objects.mergeWith(payload.obj1,payload.obj2)
 }
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `someEntry(object obj, function func)`
 Returns a boolean depending on if at least one key-value pair passes the function `func`.
 
@@ -105,6 +117,10 @@ ds.objects.someEntry(payload, function(value, key) value < 2)
 ------------------------
 true
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `takeWhile(object obj, function func)`
 Takes all key value pairs that result in true from the function. Stops on the first value that fails.
@@ -131,3 +147,8 @@ ds.objects.takeWhile(payload, function(value,key) value < 2)
   "a": 1
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+

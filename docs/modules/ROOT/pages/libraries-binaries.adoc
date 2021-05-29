@@ -14,6 +14,10 @@ ds.binaries.fromBase64("SGVsbG8gV29ybGQ=")
 "Hello World"
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `fromHex(string value)`
 Converts `value` from hexadecimal.
 
@@ -27,6 +31,10 @@ ds.binaries.fromHex("48656C6C6F20576F726C64")
 ------------------------
 "Hello World"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `readLinesWith(string value, string encoding)`
 Reads `value` with the specified encoding `encoding`.
@@ -42,6 +50,10 @@ ds.binaries.readLinesWith("Hello World", "UTF-8")
 ["Hello World"]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `toBase64(any value)`
 Converts `value` to base 64.
 
@@ -55,6 +67,10 @@ ds.binaries.toBase64("Hello World")
 ------------------------
 "SGVsbG8gV29ybGQ="
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `toHex(any value)`
 Converts `value` to hexadecimal.
@@ -70,6 +86,10 @@ ds.binaries.toHex("Hello World")
 "48656C6C6F20576F726C64"
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `writeLinesWith(string value, string encoding)`
 Writes `value` with the specified encoding `encoding`.
 
@@ -83,3 +103,8 @@ ds.binaries.writeLinesWith(["Hello World"], "UTF-8")
 ------------------------
 "Hello World\n"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+
