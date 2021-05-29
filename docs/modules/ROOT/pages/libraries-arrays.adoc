@@ -26,6 +26,10 @@ ds.arrays.countBy(payload, function(item) item > 2)
 3
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `deepFlatten(array arr)`
 Given `arr`, which contains one level and multi level arrays, returns a flat array.
 
@@ -64,6 +68,10 @@ ds.arrays.deepFlatten(payload)
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `divideBy(array arr, number size)`
 Divides a single array `arr` into multiple arrays, limiting each one to `size`.
 
@@ -100,6 +108,10 @@ ds.arrays.divideBy(payload, 2)
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `drop(array arr, number index)`
 Removes every item in `arr` until the specified `index` is reached.
 
@@ -126,6 +138,10 @@ ds.arrays.drop(payload, 3)
   5
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `dropWhile(array arr, function func)`
 Removes every item in `arr` until `func` returns a false result, then stops.
@@ -157,6 +173,10 @@ ds.arrays.dropWhile(payload, function(item) item < 3)
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `duplicates(array arr)`
 Returns the values that exist more than once in `arr`.
 
@@ -180,6 +200,10 @@ ds.arrays.duplicates(payload)
   1
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `every(array arr, function func)`
 Returns true if every value `arr` returns true in `func`.
@@ -207,6 +231,10 @@ ds.arrays.every(payload, function(item) item > 0)
 true
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `firstWith(array arr, function func)`
 Returns the first value that passes the condition of `func` then stops.
 
@@ -233,6 +261,10 @@ ds.arrays.firstWith(payload, function(item,index) item == index + 1)
 1
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `indexOf(array arr, any value)`
 Returns the current index of the matching `value` in `arr`.
 
@@ -256,6 +288,10 @@ ds.arrays.indexOf(payload, 3)
 ------------------------
 2
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `indexWhere(array arr, function func)`
 Returns the first index where the condition of `func` passes.
@@ -282,6 +318,10 @@ ds.arrays.indexWhere(payload, function(item) item == 3)
 ------------------------
 2
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `join(array arrL, array arrR, function funcL, function funcR)`
 Joins two arrays together, returns the items of `arrL` with the items that match from `arrR`.
@@ -357,6 +397,39 @@ ds.arrays.join(
   }
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+
+### `lastIndexOf(array arr, any value)`
+Returns the current index of the final matching `value` in `arr`.
+
+*Example*
+
+.Payload
+----------
+[
+  1,
+  2,
+  3,
+  4,
+  5,
+  3
+]
+----------
+.DataSonnet map:
+------------------------
+ds.arrays.lastIndexOf(payload, 3)
+------------------------
+.Result
+------------------------
+5
+------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `leftJoin(array arrL, array arrR, function funcL, function funcR)`
 Joins two arrays together, returns all of the items of `arrL`, with the items that match from `arrR`.
@@ -438,6 +511,10 @@ ds.arrays.leftJoin(
   }
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `outerJoin(array arrL, array arrR, function funcL, function funcR)`
 Joins two arrays together, returns the items of `arrL` with the items that match from `arrR`, the items from `arrL` that don't have matches, and items from `arrR` that don't have matches.
@@ -526,6 +603,10 @@ ds.arrays.outerJoin(
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `occurrences(array arr, function func)`
 Returns an object where the keys of the object are the result of `func` and the values of the object indicate how many times the key occurs in `arr`.
 
@@ -556,6 +637,10 @@ ds.arrays.occurrences(payload, function(item) item)
   "c": 1
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `partition(array arr, function func)`
 Splits `arr` into two arrays of successes and failures from the results of `func`.
@@ -593,6 +678,10 @@ ds.arrays.partition(payload, function(item) item > 3)
 }
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `slice(array arr, number start, number end)`
 Returns a subset of `arr` between the indexes of `start` and `end`.
 
@@ -620,6 +709,10 @@ ds.arrays.slice(payload, 2, 4)
 ]
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `some(array arr, function func)`
 Returns true if at least one item in `arr` passes the condition in `func`.
 
@@ -645,6 +738,10 @@ ds.arrays.some(payload, function(item) item > 2)
 ------------------------
 true
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `splitAt(array arr, number index)`
 Splits `arr` into a left and right array based on the `index`.
@@ -679,6 +776,10 @@ ds.arrays.splitAt(payload, 3)
   ]
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `splitWhere(array arr, function func)`
 Splits `arr` into a left and right array based on the first index that returns true for `func`.
@@ -716,6 +817,10 @@ ds.arrays.splitWhere(payload, function(item) item > 3)
 }
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `sumBy(array arr, function func)`
 Calculates the sum of `arr` by the function provided value.
 
@@ -741,6 +846,10 @@ ds.arrays.sumBy(payload, function(item) item)
 ------------------------
 15
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `take(array arr, number index)`
 Returns all values from `arr` up to the `index`.
@@ -768,6 +877,10 @@ ds.arrays.take(payload, 3)
   3
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `takeWhile(array arr, function func)`
 Takes all items from the array while `func` is true. Stops at the first false value.
@@ -797,3 +910,8 @@ ds.arrays.takeWhile(payload, function(item) item < 3)
   2
 ]
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+

@@ -5,126 +5,163 @@ Returns the period between two datetime objects.
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.between(
     ds.datetime.date({year:2020}),
     ds.datetime.date({year:2019, month: 3})
 )
 ------------------------
-
 .Result:
 ------------------------
 "P-10M"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `days(number num)`
 Returns the number of given days in period format.
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.days(5)
 ------------------------
-
 .Result:
 ------------------------
 "P5D"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `duration(object time)`
 Returns the given time object in a Period of Time format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.duration({days: 1, hours: 1, minutes: 1, seconds: 1})
 ------------------------
-
 .Result:
 ------------------------
 "PT25H1M1S"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `hours(number num)`
 Returns the number of given hours in a Period of Time format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.hours(1)
 ------------------------
-
 .Result:
 ------------------------
 "PT1H"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `minutes(number num)`
 Returns the number of given minutes in a Period of Time format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.hours(1)
 ------------------------
-
 .Result:
 ------------------------
 "PT1M"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `months(number num)`
 Returns the number of given months in a Period format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.months(1)
 ------------------------
-
 .Result:
 ------------------------
 "P1M"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `period(object time)`
 Returns the given time object in a Period format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.period({years: 1, months: 1, days: 1})
 ------------------------
-
 .Result:
 ------------------------
 "P1Y1M1D"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `seconds(number num)`
 Returns the number of given seconds in a Period of Time format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.seconds(1)
 ------------------------
-
 .Result:
 ------------------------
 "PT1S"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `years(number num)`
 Returns the number of given years in a Period format
 
 *Example*
 
+.DataSonnet map:
 ------------------------
 ds.period.years(1)
 ------------------------
-
 .Result:
 ------------------------
 "P1Y"
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+

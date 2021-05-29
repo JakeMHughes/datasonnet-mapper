@@ -7,6 +7,7 @@ The transformation string describes the operation (or set of operations) to be p
 
 *Example:*
 
+.DataSonnet map:
 ------------------------
 ds.crypto.decrypt("Hello World", "DataSonnet123456", "AES/ECB/PKCS5Padding")
 ------------------------
@@ -15,6 +16,10 @@ ds.crypto.decrypt("Hello World", "DataSonnet123456", "AES/ECB/PKCS5Padding")
 "HrkF1grBXCtATMLxh1gZVA=="
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `encrypt(string value, string secret, string transformation)`
 Encrypts the value with specified JDK Cipher Transformation and the provided secret. Converts the encryption to a readable format with Base64.
 
@@ -22,6 +27,7 @@ The transformation string describes the operation (or set of operations) to be p
 
 *Example:*
 
+.DataSonnet map:
 ------------------------
 ds.crypto.decrypt("HrkF1grBXCtATMLxh1gZVA==", "DataSonnet123456", "AES/ECB/PKCS5Padding")
 ------------------------
@@ -30,12 +36,18 @@ ds.crypto.decrypt("HrkF1grBXCtATMLxh1gZVA==", "DataSonnet123456", "AES/ECB/PKCS5
 "Hello World"
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `hash(string value, string algorithm)`
 Calculates hash of `value` using one of the supported algorithms. The `algorithm` must be one of `MD2`, `MD5`, `SHA-1`, `SHA-256`, `SHA-384`, `SHA-512`
+
 The response is a string containing the hash bytes.
 
 *Example:*
 
+.DataSonnet map:
 ------------------------
 {
     hashValue: ds.crypto.hash("HelloWorld", "MD5")
@@ -47,11 +59,17 @@ The response is a string containing the hash bytes.
     "hashValue": "68e109f0f40ca72a15e05cc22786f8e6"
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+
 ### `hmac(string value, string secret, string algorithm)`
 Generates hash-based message authentication code using provided `value`, `secret`, and a hash function `algorithm`. The `algorithm` must be one of `HmacSHA1`, `HmacSHA256` or `HmacSHA512`.
 
 *Example:*
 
+.DataSonnet map:
 ------------------------
 {
     hmacValue: ds.crypto.hmac("HelloWorld", "DataSonnet rules!", "HmacSHA256")
@@ -63,3 +81,8 @@ Generates hash-based message authentication code using provided `value`, `secret
     "hmacValue": "7854220ef827b07529509f68f391a80bf87fff328dbda140ed582520a1372dc1"
 }
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+

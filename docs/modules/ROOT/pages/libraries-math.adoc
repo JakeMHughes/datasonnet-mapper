@@ -14,6 +14,10 @@ ds.math.abs(-1)
 1
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `acos(number num)`
 Performs math acos operation on `num`.
 
@@ -27,6 +31,10 @@ ds.math.acos(1)
 ------------------------
 0
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `asin(number num)`
 Performs math asin operation on `num`.
@@ -42,6 +50,10 @@ ds.math.asin(1)
 1.5707963267948966
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `atan(number num)`
 Performs math atan operation on `num`.
 
@@ -55,6 +67,10 @@ ds.math.atan(1)
 ------------------------
 0.7853981633974483
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `avg(array arr)`
 Returns the average value of `arr`.
@@ -70,6 +86,10 @@ ds.math.avg([1,2,3])
 2
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `ceil(number num)`
 Rounds `num` up.
 
@@ -83,6 +103,10 @@ ds.math.ceil(1.01)
 ------------------------
 2
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `clamp(number value, number minVal, number maxVal)`
 Limits `value` to the range of `minVal` and `maxVal`.
@@ -98,6 +122,10 @@ ds.math.clamp(100, 0, 10)
 10
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `cos(number num)`
 Performs math cos operation on `num`.
 
@@ -112,6 +140,10 @@ ds.math.cos(0)
 1
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `exp(number num)`
 Returns the result of e to the power of `num`, in other words e^`num`^.
 
@@ -125,6 +157,10 @@ ds.math.exp(2)
 ------------------------
 7.38905609893065
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `exponent(number num)`
 Returns the non-decimal portion of a logarithmic operation.
@@ -142,6 +178,10 @@ ds.math.exponent(2)
 2
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `floor(number num)`
 Rounds `num` down.
 
@@ -156,6 +196,10 @@ ds.math.floor(4.99)
 4
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `log(number num)`
 Performs math log operation. on `num`.
 
@@ -168,13 +212,17 @@ ds.math.log(2)
 .Result
 ------------------------
 0.6931471805599453
-
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `mantissa(number num)`
 Returns the decimal portion of a logarithmic operation.
 
 exponent = (log(`num`)/log(2)) + 1
+
 mantissa = `num` * pow(2, -exponent)
 
 *Example*
@@ -187,6 +235,10 @@ ds.math.mantissa(2)
 ------------------------
 0.5
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `mod(number num1, number num2)`
 Performs modulo operation, returns how many times `num1` can go into `num2`.
@@ -202,6 +254,10 @@ ds.math.mod(2,4)
 2
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `pow(number num1, number num2)`
 Returns the value of `num1` to the power of `num2`, in other words `num1`^`num2`^.
 
@@ -215,6 +271,10 @@ ds.math.pow(2,2)
 ------------------------
 4
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `random`
 Returns a random float value between 0 and 1.
@@ -230,6 +290,10 @@ ds.math.random
 0.5963038027787421
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `randomInt(number num)`
 Returns a random integer between 0 and the provided number inclusive.
 
@@ -243,6 +307,10 @@ ds.math.randomInt(500)
 ------------------------
 485
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `round(number num)`
 Rounds `num` to the nearest whole number.
@@ -258,6 +326,10 @@ ds.math.round(2.5)
 3
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `sin(number num)`
 Performs math sin operation on `num`.
 
@@ -272,6 +344,10 @@ ds.math.sin(1)
 0.8414709848078965
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `sqrt(number num)`
 Performs math square root operation on `num`.
 
@@ -285,6 +361,10 @@ ds.math.sqrt(4)
 ------------------------
 2
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
 
 ### `sum(array arr)`
 Returns sum of all elements in `arr`.
@@ -304,6 +384,10 @@ ds.math.sum(payload)
 60
 ------------------------
 
+*Version*:
+
+Created: 1.0.0
+
 ### `tan(number num)`
 Performs math tan operation on `num`.
 
@@ -317,3 +401,8 @@ ds.math.tan(1)
 ------------------------
 1.5574077246549023
 ------------------------
+
+*Version*:
+
+Created: 1.0.0
+
